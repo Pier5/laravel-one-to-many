@@ -30,8 +30,9 @@
                     <label for="slug" class="form-label">Slug</label>
                     <input type="text" class="form-control" id="slug" name="slug" value="{{ old('slug') }}">                
                 </div>
-                <button type="submit" class="btn btn-primary">Invia</button>
+                <button type="submit" class="btn btn-primary">Salva</button>
             </form>
+            <a href="{{ route('admin.home') }}" class="btn btn-dark my-4">Torna alla home</a>
         </div>
     </div>
   </div>

@@ -26,7 +26,6 @@
                                 <td class="text-center">{{ $post->title }}</td>
                                 <td class="text-center">{{ $post->slug }}</td>
                                 <td>{{ date('d/m/Y', strtotime($post->created_at)) }}</td>
-                                <td>{{ date('d/m/Y', strtotime($post->updated_at)) }}</td>
                                 <td>
                                     <a class="btn btn-primary" href="{{ route('admin.posts.show', $post->slug) }}">Dettagli</a>
                                 </td>
@@ -41,8 +40,7 @@
                     </tbody>
                 </table>
                 <div class="d-flex">
-                    <a href="{{ route('admin.posts.create') }}" class="btn btn-primary mb-4 me-auto">Crea un nuovo post</a>
-                    <a href="{{ route('admin.home') }}" class="btn btn-dark mb-4">Torna al Logout</a>
+                    <a href="{{ route('admin.home') }}" class="btn btn-dark mb-4">Torna alla home</a>
                 </div>
             </div>
         </div>

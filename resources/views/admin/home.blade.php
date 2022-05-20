@@ -8,17 +8,14 @@
                 <div class="card-header">{{ __('Dashboard') }}</div>
 
                 <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    {{ __('You are logged in!') }}
+                    <a href="{{ route('admin.posts.create') }}" class="btn btn-primary mb-4 me-auto">Crea un nuovo post</a>
+                    <a href="{{ route('admin.posts.index') }}" class="btn btn-primary mb-4 me-auto">Vedi tutti i post</a>
+                    {{-- <a href="{{ route('admin.posts.index') }}" class="btn btn-primary mb-4 me-auto">I miei post</a> --}}
                 </div>
             </div>
+            
         </div>
-        <h1 class="fs-2 mt-3">Vai alla <a class="text-decoration-none" href="{{ route('admin.posts.index') }}">Home</a></h1>
+        
     </div>
 </div>
 @endsection

@@ -5,6 +5,9 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Post;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Routing\Route;
 
 class PostController extends Controller
 {
@@ -44,9 +47,11 @@ class PostController extends Controller
     public function store(Request $request)
     {
         $request->validate($this->validationRules);
-        $formData = $request->all();
-        Post::create($formData);
-        return redirect()->route('admin.posts.index');
+        $formData = $request->all() + [
+            'user_id' => Auth::user()->id,
+        ];
+        $post = Post::create($formData);
+        return redirect()->route('admin.posts.show', $post->slug);
     }
 
     /**
