@@ -16,8 +16,11 @@
 
             <div class="row g-4 pt-4">
                 <div class="col-8">
-                    <h3 class="pt-2">Nome autore: {{ $post->user->name }}</h3>
-                    <h3 class="pt-2">Email: {{ $post->user->email }}</h3>
+                    <h4 class="pt-2">Nome autore: {{ $post->user->name }}</h4>
+                    <h4 class="pt-2">Email: {{ $post->user->email }}</h4>
+                    <h6 class="pt-2">Indirizzo: {{ $post->user->userInfo->address }}</h6>
+                    <h6 class="pt-2">Numero di telefono: {{ $post->user->userInfo->phone }}</h6>
+                    <h6 class="pt-2">Data di nascita: {{ $post->user->userInfo->b_day }}</h6>
                 </div>
             </div>
 
