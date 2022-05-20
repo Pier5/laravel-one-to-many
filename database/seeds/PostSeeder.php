@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use Faker\Generator as Faker;
+use App\User;
 use App\Post;
 
 class PostSeeder extends Seeder
@@ -16,7 +17,8 @@ class PostSeeder extends Seeder
         for ($i=0; $i < 100; $i++) {
             $title = $faker->words(rand(2, 10), true);
             Post::create([
-                'title'         => $faker->word(),
+                'user_id'       => User::inRandomOrder()->first()->id,
+                'title'         => $title,
                 'description'   => $faker->text(rand(50, 300)),
                 'slug'          => Post::generateSlug($title)
             ]);
