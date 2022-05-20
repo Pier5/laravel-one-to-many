@@ -27,13 +27,17 @@
                                 <td class="text-center">{{ $post->slug }}</td>
                                 <td>{{ date('d/m/Y', strtotime($post->created_at)) }}</td>
                                 <td>
-                                    <a class="btn btn-primary" href="{{ route('admin.posts.show', $post->slug) }}">Dettagli</a>
+                                    <a class="btn btn-primary" href="{{ route('admin.posts.show', $post->slug) }}">View</a>
                                 </td>
                                 <td>
-                                    <a class="btn btn-primary" href="{{ route('admin.posts.edit', $post->slug) }}">Modifica</a>
+                                    @if (Auth::user()->id === $post->user_id)
+                                        <a class="btn btn-primary" href="{{ route('admin.posts.edit', $post->slug) }}">Edit</a>
+                                    @endif
                                 </td>
                                 <td class="text-center">
-                                    <button class="btn btn-danger btn-delete">Cancella</button>
+                                    @if (Auth::user()->id === $post->user_id)
+                                        <button class="btn btn-danger btn-delete">Delete</button>
+                                    @endif
                                 </td>
                             </tr>
                         @endforeach

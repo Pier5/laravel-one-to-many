@@ -27,7 +27,7 @@
                     <label for="description" class="form-label">Descrizione</label>
                     <textarea class="form-control" name="description" id="description">{{ $post->description }}</textarea>
                 </div>
-                <button type="submit" class="btn btn-primary">Invia</button>
+                <button type="submit" class="btn btn-primary">Salva</button>
             </form>
         </div>
     </div>

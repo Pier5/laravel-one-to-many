@@ -51,7 +51,7 @@ class PostController extends Controller
             'user_id' => Auth::user()->id,
         ];
         $post = Post::create($formData);
-        return redirect()->route('admin.posts.show', $post->slug);
+        return redirect()->route('admin.posts.show', $post->id);
     }
 
     /**
@@ -74,6 +74,7 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
+        if (Auth::user()->id !== $post->user_id) abort(403);
         return view('admin.posts.edit', compact('post'));
     }
 
@@ -86,10 +87,10 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
+        if (Auth::user()->id !== $post->user_id) abort(403);
         $request->validate($this->validationRules);
-        $formData = $request->all();
-        $post->update($formData);
-        return redirect()->route('admin.posts.index', $post->slug);
+        $post->update($request->all());
+        return redirect()->route('admin.posts.show', $post->slug);
     }
 
     /**
