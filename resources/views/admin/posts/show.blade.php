@@ -23,9 +23,7 @@
                     <h6 class="pt-2">Data di nascita: {{ $post->user->userInfo->b_day }}</h6>
                 </div>
             </div>
-
-            <a class="btn btn-primary mt-4" href="{{ route('admin.posts.index') }}"><span class="text-white">Torna indietro</span></a>
-
+            <a class="btn btn-primary mt-4" href="{{ route('admin.home') }}"><span class="text-white">Torna indietro</span></a>
         </div>
       </main>
 @endsection

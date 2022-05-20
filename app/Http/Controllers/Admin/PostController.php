@@ -51,7 +51,7 @@ class PostController extends Controller
             'user_id' => Auth::user()->id,
         ];
         $post = Post::create($formData);
-        return redirect()->route('admin.posts.show', $post->id);
+        return redirect()->route('admin.posts.show', $post->slug);
     }
 
     /**
@@ -104,5 +104,10 @@ class PostController extends Controller
         $post->delete();
 
         return redirect()->route('admin.posts.index');
+    }
+
+    public function myindex() {
+        $posts = Post::where('user_id', Auth::user()->id)->paginate(20);
+        return view('admin.posts.index', compact('posts'));
     }
 }

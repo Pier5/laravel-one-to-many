@@ -7,15 +7,13 @@
             <div class="card">
                 <div class="card-header">{{ __('Dashboard') }}</div>
 
-                <div class="card-body">
-                    <a href="{{ route('admin.posts.create') }}" class="btn btn-primary mb-4 me-auto">Crea un nuovo post</a>
-                    <a href="{{ route('admin.posts.index') }}" class="btn btn-primary mb-4 me-auto">Vedi tutti i post</a>
-                    {{-- <a href="{{ route('admin.posts.index') }}" class="btn btn-primary mb-4 me-auto">I miei post</a> --}}
+                <div class="card-body d-flex justify-content-center">
+                    <a href="{{ route('admin.posts.create') }}" class="btn btn-dark mb-4 me-2">Crea un nuovo post</a>
+                    <a href="{{ route('admin.posts.index') }}" class="btn btn-primary mb-4 me-2">Vedi tutti i post</a>
+                    <a href="{{ route('admin.posts.myindex') }}" class="btn btn-info mb-4">I miei post</a>
                 </div>
             </div>
-            
         </div>
-        
     </div>
 </div>
 @endsection
