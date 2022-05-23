@@ -25,7 +25,7 @@
                                 <td class="text-center">{{ $post->id }}</td>
                                 <td class="text-center">{{ $post->title }}</td>
                                 <td class="text-center">{{ $post->slug }}</td>
-                                <td>{{ date('d/m/Y', strtotime($post->created_at)) }}</td>
+                                <td class="text-center">{{ date('d/m/Y', strtotime($post->created_at)) }}</td>
                                 <td>
                                     <a class="btn btn-primary" href="{{ route('admin.posts.show', $post->slug) }}">View</a>
                                 </td>
