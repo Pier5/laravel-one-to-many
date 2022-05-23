@@ -11,6 +11,8 @@
                     <h2 class="pt-2">Titolo: {{ $post->title }}</h2>
                     <h3 class="pt-2">Descrizione:</h3>
                     <p class="card-text pt-2">{{ $post->description }}</p>
+                    <h5>Categoria:</h5>
+                    <h5>{{ $post->category->type }}</h5>
                 </div>
             </div>
 

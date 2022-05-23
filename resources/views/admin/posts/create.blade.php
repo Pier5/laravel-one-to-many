@@ -30,6 +30,14 @@
                     <label for="slug" class="form-label">Slug</label>
                     <input type="text" class="form-control" id="slug" name="slug" value="{{ old('slug') }}">                
                 </div>
+                <div class="mb-3">
+                    <select class="form-select" name="category_id" id="category">
+                        <option value="" selected>Seleziona una categoria</option>
+                        @foreach($categories as $category)
+                            <option value="{{ $category->id }}">{{ $category->type }}</option>
+                        @endforeach
+                    </select>
+                </div>
                 <button type="submit" class="btn btn-primary">Salva</button>
             </form>
             <a href="{{ route('admin.home') }}" class="btn btn-dark my-4">Torna alla home</a>
