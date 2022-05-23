@@ -7,6 +7,42 @@
         @if (session('deleted'))
             <div class="alert alert-warning">{{ session('deleted') }}</div>
         @endif
+
+        <div class="row mt-3">
+            <div class="col">
+                <form action="" method="get" class="row g-3 mb-3">
+                    <div class="col-md-6">
+                        <select class="form-select" aria-label="Default select example" name="category" id="category">
+                            <option value="" selected>Seleziona una categoria</option>
+        
+                            @foreach ($categories as $category)
+                                <option value="{{ $category->id }}" @if($category->id == $request->category) selected @endif>{{ $category->type }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+        
+                    <div class="col-md-6">
+                        <select class="form-select" aria-label="Default select example" name="author" id="author">
+                            <option value="" selected>Seleziona un autore</option>
+        
+                            @foreach ($users as $user)
+                                <option value="{{ $user->id }}" @if($user->id == $request->author) selected @endif>{{ $user->name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+        
+                    <div class="col-md-12">
+                        <label for="search-string" class="form-label">{{ __('Stringa di ricerca') }}</label>
+                        <input type="text" class="form-control" id="search-string" name="s" value="{{ $request->s }}">
+                    </div>
+        
+                    <div class="col mt-4">
+                        <button class="btn btn-primary">Applica filtri</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
         <div class="row">
             <div class="col">
                 <table class="table table-dark table-hover">

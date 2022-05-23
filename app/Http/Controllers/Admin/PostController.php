@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Post;
+use App\Category;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Auth;
@@ -11,11 +13,6 @@ use Illuminate\Routing\Route;
 
 class PostController extends Controller
 {
-
-    protected $validationRules = [
-        "title"       => "required|max:100",
-        "description" => "required|min:50|max:300",       
-    ];
 
     private function getValidators($model) {
         return [
@@ -34,11 +31,32 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $posts = Post::paginate(20);
+        $posts = Post::where('id', '>', 0);
 
-        return view('admin.posts.index', compact('posts'));
+        if ($request->s) {
+            $posts->where('title', 'LIKE', "%$request->s%");
+        }
+
+        if ($request->category) {
+            $posts->where('category_id', $request->category);
+        }
+
+        if ($request->author) {
+            $posts->where('user_id', $request->author);
+        }
+
+        $posts = $posts->paginate(20);
+        $categories = Category::all();
+        $users = User::all();
+
+        return view('admin.posts.index', [
+            'posts'         => $posts,
+            'categories'    => $categories,
+            'users'         => $users,
+            'request'       => $request
+        ]);
     }
 
     /**
@@ -120,10 +138,5 @@ class PostController extends Controller
         $post->delete();
 
         return redirect()->route('admin.posts.index');
-    }
-
-    public function myindex() {
-        $posts = Post::where('user_id', Auth::user()->id)->paginate(20);
-        return view('admin.posts.index', compact('posts'));
     }
 }
