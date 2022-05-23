@@ -24,6 +24,10 @@
                     <input type="text" class="form-control" id="title" name="title" value="{{ $post->title }}">
                 </div>
                 <div class="mb-3">
+                    <label for="slug" class="form-label">Slug</label>
+                    <input type="text" class="form-control" id="slug" name="slug" value="{{ $post->slug }}">
+                </div>
+                <div class="mb-3">
                     <label for="description" class="form-label">Descrizione</label>
                     <textarea class="form-control" name="description" id="description">{{ $post->description }}</textarea>
                 </div>

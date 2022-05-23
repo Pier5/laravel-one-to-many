@@ -16,6 +16,19 @@ class PostController extends Controller
         "title"       => "required|max:100",
         "description" => "required|min:50|max:300",       
     ];
+
+    private function getValidators($model) {
+        return [
+            'title'     => 'required|max:100',
+            'slug'      => [
+                'required',
+                Rule::unique('posts')->ignore($model),
+                'max:100'
+            ],
+            // 'category_id'  => 'required|exists:App\Category,id',
+            'description'   => 'required'
+        ];
+    }
     /**
      * Display a listing of the resource.
      *
@@ -47,7 +60,8 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate($this->validationRules);
+        // $request->validate($this->validationRules);
+        $request->validate($this->getValidators(null));
         $formData = $request->all() + [
             'user_id' => Auth::user()->id,
         ];
@@ -89,7 +103,8 @@ class PostController extends Controller
     public function update(Request $request, Post $post)
     {
         if (Auth::user()->id !== $post->user_id) abort(403);
-        $request->validate($this->validationRules);
+        // $request->validate($this->validationRules);
+        $request->validate($this->getValidators($post));
         $post->update($request->all());
         return redirect()->route('admin.posts.show', $post->slug);
     }
