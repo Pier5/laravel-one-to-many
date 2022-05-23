@@ -14,25 +14,32 @@ class CategorySeeder extends Seeder
     {
         $categories = [
             [
-                'type' => 'Politica'
+                'type' => 'Politica',
+                'description' => 'Approfondimento sulla politica italiana ed estera'
             ],
             [
-                'type' => 'Attualità'
+                'type' => 'Attualità',
+                'description' => 'Approfondimento sull\'attualità mondiale'
             ],
             [
-                'type' => 'Sport'
+                'type' => 'Sport',
+                'description' => 'Approfondimento su tutti gli sport'
             ],
             [
-                'type' => 'Informatica'
+                'type' => 'Informatica',
+                'description' => 'Approfondimento sul mondo tech'
             ],
             [
-                'type' => 'Cronaca'
+                'type' => 'Cronaca',
+                'description' => 'Approfondimento sulla cronaca mondiale'
             ],
             [
-                'type' => 'Gossip'
+                'type' => 'Gossip',
+                'description' => 'Approfondimento curato da Alfonso Signorini'
             ],
             [
-                'type' => 'Economia'
+                'type' => 'Economia',
+                'description' => 'Approfondimento sulla situazione economica mondiale'
             ],
         ];
 

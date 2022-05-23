@@ -30,7 +30,7 @@
                                     <a class="btn btn-primary" href="{{ route('admin.categories.edit', $category->id) }}">Edit</a>
                                 </td>
                                 <td class="text-center">
-                                        <button class="btn btn-danger btn-delete">Delete</button>                                 
+                                    <button class="btn btn-danger btn-delete">Delete</button>                                 
                                 </td>
                             </tr>
                         @endforeach
@@ -43,6 +43,20 @@
         </div>
 
         {{-- {{ $categories->links() }} --}}
+
+        <section id="confirmation-overlay" class="overlay d-none">
+            <div class="popup">
+                <h1>Sei sicuro di voler eliminare?</h1>
+                <div class="d-flex justify-content-center">
+                    <button id="btn-no" class="btn btn-primary me-3">NO</button>
+                    <form method="POST" data-base="{{ route('admin.categories.destroy', '*****') }}">
+                        @csrf
+                        @method('DELETE')
+                        <button class="btn btn-danger">SI</button>
+                    </form>
+                </div>
+            </div>
+        </section>
 
     </div>
 @endsection
